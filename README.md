@@ -23,6 +23,8 @@ Voici quelques commandes utiles tout au long de votre aventure !
 
 ## 1 - Notre première liste des tâches
 
+Correction : 1237a1b6f7816132bc88e2be5b1b9825aa076650
+
 Créer une application de gestion de tâches en React avec des composants `Task`.
 
 Pour chaque tâche présente dans la liste des tâches, afficher un composant `Task`.
