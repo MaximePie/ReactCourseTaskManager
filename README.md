@@ -60,6 +60,8 @@ Modifier le code de manière à ce que :
 - 💡 Envie de déclencher une action après la modification d'un state ? Utilisez `useEffect`. Plus d'informations ici : https://fr.reactjs.org/docs/hooks-effect.html
 
 
+## 5 - Organiser le projet en différents fichiers
+
 ## Comment pratiquer ?
 
 Bonjour !

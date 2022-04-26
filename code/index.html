@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>Hello React</title>
+  <!-- Library -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- babel => compilation du JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    .green{
+      color: green;
+    }
+  </style>
+
+</head>
+
+<body>
+<div id="root">
+</div>
+<script type="text/babel">
+
+  function PrimaryButton(props) {
+    return (<button>{props.text}</button>)
+  }
+
+
+  function Task(props) {
+    // isDone est un state dont la valeur va changer pendant la durée de vie de notre composant
+    // setTaskState est une fonction qui permet de modifier la valeur isDone
+    // React.useState() est une fonction qui va nous créer notre state et le stocker dans ces deux valeurs (isDone et setTaskDone)
+    // false est la valeur par défaut de notre state
+      // En effet, nous souhaiterions que chacune de nos tâches ne soit pas terminée, de base.
+    const [isDone, setTaskState] = React.useState(false);
+
+    let className = "";
+    if (isDone) {
+      className = "green";
+    }
+
+    return (
+      <li className={className}>
+        {props.texte}
+        <button onClick={updateTaskState}>Terminer</button>
+      </li>
+    )
+
+    /**
+     * Cette fonction va mettre la valeur de setTaskState et lui donner la valeur inverse.
+     * Si isDone est égale à true, alors on la met sur false. (l'inverse de true)
+     * Si isDone est égale à false, alors on la met sur true. (l'inverse de false)
+     */
+    function updateTaskState() {
+      setTaskState(!isDone) // isDone prend la valeur de son inverse
+      // La nouvelle valeur de isDone est à l'intérieur des parenthèses.
+      // La fonction Task se re-déclenche.
+    }
+  }
+
+  // Tous les composants commencent par une majuscule
+  function App() {
+    const tasks = ['Faire les courses', 'Manger de la mozza', 'Fête des lumières'];
+
+    // Ajouter le primaryButton
+    return (
+      <div>
+        <h4>Liste des tâches</h4>
+        <ul>
+          {tasks.map(task => <Task texte={task}/>)}
+        </ul>
+        <Task texte={"Tout ce qu'on veut"}/>
+      </div>
+    )
+  }
+
+  // Rendu dans le DOM
+  ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+  );
+</script>
+</body>
+
+</html>
