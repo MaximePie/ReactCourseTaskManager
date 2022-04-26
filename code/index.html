@@ -38,14 +38,17 @@
     const [isDone, setTaskState] = React.useState(false);
 
     let className = "";
+    // Le bouton du texte est égal à "Terminer" par défaut.
+    let buttonText = "Terminer";
     if (isDone) {
       className = "green";
+      buttonText = "Recommencer"; // Si isDone est égal à true, alors le texte du bouton est modifié.
     }
 
     return (
       <li className={className}>
         {props.texte}
-        <button onClick={updateTaskState}>Terminer</button>
+        <button onClick={updateTaskState}>{buttonText}</button>
       </li>
     )
 
