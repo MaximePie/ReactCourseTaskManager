@@ -30,9 +30,31 @@
 <script type="text/babel">
 
   function PrimaryButton(props) { // Provient de la génération du composant
+    // Déclencher une action quand on clique sur le bouton
+    // Stocker l'information que le bouton a été cliqué et afficher un résultat en conséquence.
+
+    // Text est le nom de notre state
+    // setText est la fonction pour modifier le state en question
+    // useState va créer le state
+    // props.text est la valeur par défaut
+    const [text, setText] = React.useState(props.text);
+
+    // Attention, strictement interdit de faire text = "haha";
+    // ça bousille le fonctionnement de React
+    // Utiliser setText
+    // Eviter de faire un setState dans la partie avant le return
     return (
-      <button className="Button">{props.text}</button>
+      <button
+        className="Button"
+        onClick={direHello}
+      >
+        {text}
+      </button>
     )
+
+    function direHello() {
+      setText('(Cliqué)' + text)
+    }
   }
 
   // App est un composant
