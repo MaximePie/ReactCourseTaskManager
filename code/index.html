@@ -25,7 +25,15 @@
 <script type="text/babel">
 
   function PrimaryButton(props) {
-    return (<button>{props.text}</button>)
+
+    // Ici, userClicksTheSuperButton est une fonction reçue depuis le composant parent.
+    // On peut donc l'appeler comme une fonction normale.
+    // userClicksTheSuperButton est un nom à rallonge, je l'écris ainsi pour rappeler que l'on peut
+    // lui donner n'importe quel nom.
+    console.log(props); // { text: "Un texte", userClicksTheSuperButton: function}
+
+    // "Quand je clique sur le bouton, appeler la fonction props.userClicksTheSuperButton"
+    return (<button onClick={props.userClicksTheSuperButton}>{props.text}</button>)
   }
 
 
@@ -48,7 +56,9 @@
     return (
       <li className={className}>
         {props.texte}
-        <button onClick={updateTaskState}>{buttonText}</button>
+        {/* Attention, PrimaryButton n'est pas un composant HTML. C'est un composant React. */}
+        {/* Pour que userClicksTheSuperButton fonctionne, il faut l'exploiter dans le composant PrimaryButton */}
+        <PrimaryButton text={buttonText} userClicksTheSuperButton={updateTaskState}/>
       </li>
     )
 
