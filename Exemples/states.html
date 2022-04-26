@@ -11,6 +11,16 @@
 
   <!-- babel => compilation du JSX -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+      .Button {
+          border: none;
+          background-color: #9ca0e8;
+          padding: 4px;
+          cursor: pointer;
+          margin: 4px;
+          border-radius: 4px;
+      }
+  </style>
 </head>
 
 <body>
@@ -19,33 +29,19 @@
 </div>
 <script type="text/babel">
 
-  function PrimaryButton(props) {
-    return (<button>{props.text}</button>)
-  }
-
-  function Task(props) {
+  function PrimaryButton(props) { // Provient de la génération du composant
     return (
-      <li>
-        {props.texte}
-        <PrimaryButton text="Editer"/>
-        <PrimaryButton text="Supprimer"/>
-      </li>
+      <button className="Button">{props.text}</button>
     )
   }
 
+  // App est un composant
+  function App() { // Javascript + Html = JSX
 
-  // Tous les composants commencent par une majuscule
-  function App() {
-    const tasks = ['Faire les courses', 'Manger de la mozza', 'Fête des lumières'];
-
-    // Ajouter le primaryButton
-    return (
+    return ( // Partie affichage
       <div>
-        <h4>Liste des tâches</h4>
-        <ul>
-          {tasks.map(task => <Task texte={task}/>)}
-        </ul>
-        <Task texte={"Tout ce qu'on veut"}/>
+        <PrimaryButton text={'Enregistrer'}/>
+        <PrimaryButton text={'Supprimer'}/>
       </div>
     )
   }

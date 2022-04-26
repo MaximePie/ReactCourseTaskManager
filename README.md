@@ -57,3 +57,17 @@ Modifier le code de manière à ce que :
 de vous concentrer sur le champ de texte
 - 💡 Utilisez `onChange` pour savoir quelle est la nouvelle valeur
 - 💡 Problème avec la mise à jour du tableau ? [Consultez ce lien](https://www.google.com/search?q=React+update+array+in+state&rlz=1C1CHBF_frFR884FR884&oq=React+update+array+in+state&aqs=chrome..69i57j0i19j69i64l3.7152j0j7&sourceid=chrome&ie=UTF-8)
+
+## 4 - Ajouter des vérifications sur le formulaire 
+
+Modifier le code de manière à ce que : 
+- Lorsque le champ de nouvelle tâche est vide : 
+  - Le bouton est bloqué (attribut `disabled`)
+  - Le champ de texte est contouré en rouge
+  - Un message d'avertissement s'affiche en rouge en dessous du champ de texte
+
+- Lorsqu'une nouvelle tâche est créée, vider le champ du formulaire pour permettre de saisir une nouvelle tâche
+
+- 💡 Quelle est la valeur qui détermine si le formulaire est valide ou non ? Cette réponse vous aidera à déterminer les `states`.
+- 💡 Envie de déclencher une action après la modification d'un state ? Utilisez `useEffect`. Plus d'informations ici : https://fr.reactjs.org/docs/hooks-effect.html
+
