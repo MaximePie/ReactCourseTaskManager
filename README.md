@@ -1,25 +1,11 @@
 # ReactCourseTaskManager
 
-## Comment pratiquer ?
+## Commandes git 
 
-Bonjour !
-Voici quelques commandes utiles tout au long de votre aventure !
-
-- Cloner le projet sur votre ordinateur (inutile de le faire plusieurs fois)`git clone https://github.com/MaximePie/ReactCourseTaskManager.git`
-- Mettre à jour le projet sur votre ordinateur : `git fetch`
-- Démarrer le projet : Ouvrir le fichier `index.html` dans un navigateur
-- Charger le code d'une vidéo en particulier :
-    - `git checkout <id du commit>`
-        - Exemple : `git checkout edb468a6c474f3b1dfed885f4b71cb52c86753bb` charge le tout premier commit
-        - Plus d'informations ici : https://devopscube.com/checkout-clone-specific-git-commit-id-sha/
-
-
-### Trouver le commit 
-1.
-![image](https://user-images.githubusercontent.com/16031936/165256254-bfab5051-f7fe-4b22-8484-0827a670d66c.png)
-2.
-![image](https://user-images.githubusercontent.com/16031936/165256327-6e083399-32e0-4bc9-bd41-7125ff14e751.png)
-
+- `git pull` : Récupère le code en ligne
+- `git checkout <idCommit>` : Nous place sur le code d'un commit particulier. 
+  - Attention, `git pull` ne marchera pas depuis ce commit. Pour pouvoir `pull`, utiliser `switch`.
+- `git switch main` : Retourne sur la branche main, et permet de faire un `git pull`.
 
 ## 1 - Notre première liste des tâches
 
@@ -72,4 +58,25 @@ Modifier le code de manière à ce que :
 
 - 💡 Quelle est la valeur qui détermine si le formulaire est valide ou non ? Cette réponse vous aidera à déterminer les `states`.
 - 💡 Envie de déclencher une action après la modification d'un state ? Utilisez `useEffect`. Plus d'informations ici : https://fr.reactjs.org/docs/hooks-effect.html
+
+
+## Comment pratiquer ?
+
+Bonjour !
+Voici quelques commandes utiles tout au long de votre aventure !
+
+- Cloner le projet sur votre ordinateur (inutile de le faire plusieurs fois)`git clone https://github.com/MaximePie/ReactCourseTaskManager.git`
+- Mettre à jour le projet sur votre ordinateur : `git fetch`
+- Démarrer le projet : Ouvrir le fichier `index.html` dans un navigateur
+- Charger le code d'une vidéo en particulier :
+    - `git checkout <id du commit>`
+        - Exemple : `git checkout edb468a6c474f3b1dfed885f4b71cb52c86753bb` charge le tout premier commit
+        - Plus d'informations ici : https://devopscube.com/checkout-clone-specific-git-commit-id-sha/
+
+
+### Trouver le commit
+1.
+![image](https://user-images.githubusercontent.com/16031936/165256254-bfab5051-f7fe-4b22-8484-0827a670d66c.png)
+2.
+![image](https://user-images.githubusercontent.com/16031936/165256327-6e083399-32e0-4bc9-bd41-7125ff14e751.png)
 
