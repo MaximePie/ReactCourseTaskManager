@@ -12,3 +12,48 @@ Voici quelques commandes utiles tout au long de votre aventure !
     - `git checkout <id du commit>`
         - Exemple : `git checkout edb468a6c474f3b1dfed885f4b71cb52c86753bb` charge le tout premier commit
         - Plus d'informations ici : https://devopscube.com/checkout-clone-specific-git-commit-id-sha/
+
+
+### Trouver le commit 
+1.
+![image](https://user-images.githubusercontent.com/16031936/165256254-bfab5051-f7fe-4b22-8484-0827a670d66c.png)
+2.
+![image](https://user-images.githubusercontent.com/16031936/165256327-6e083399-32e0-4bc9-bd41-7125ff14e751.png)
+
+
+## 1 - Notre première liste des tâches
+
+Créer une application de gestion de tâches en React avec des composants `Task`.
+
+Pour chaque tâche présente dans la liste des tâches, afficher un composant `Task`.
+
+Le composant `Task` :
+- affiche le texte de la tâche reçue en props.
+- Affiche un bouton "Supprimer"
+
+Bonus :
+- Transformer le bouton Supprimer en un composant PrimaryButton
+
+## 2 - Terminer une tâche
+
+Modifier le code de manière à ce que : 
+- Le bouton "Supprimer" devient le bouton "Terminer"
+- Lorsque l'on clique sur le bouton "Terminer", la couleur de la tâche passe en vert. 
+- Lorsque l'on clique de nouveau sur le bouton "Terminer", la couleur de la tâche passe en rouge.
+
+### Ressources 
+💡 - Créer un state en React : https://fr.reactjs.org/docs/hooks-state.html
+
+## 3 - Créer une tâche 
+
+Modifier le code de manière à ce que :
+- Un formulaire pour créer une nouvelle tâche est affiché
+- Le formulaire propose :
+  - Un champ de texte pour saisir le nom de la tâche 
+  - Un bouton Enregistrer
+- Lorsque l'on clique sur "Enregistrer", la liste des tâches est mise à jour et une tâche est ajoutée.
+
+- 💡 Vous pouvez commencer par essayer d'ajouter une tâche fixe au click du bouton, puis
+de vous concentrer sur le champ de texte
+- 💡 Utilisez `onChange` pour savoir quelle est la nouvelle valeur
+- 💡 Problème avec la mise à jour du tableau ? [Consultez ce lien](https://www.google.com/search?q=React+update+array+in+state&rlz=1C1CHBF_frFR884FR884&oq=React+update+array+in+state&aqs=chrome..69i57j0i19j69i64l3.7152j0j7&sourceid=chrome&ie=UTF-8)

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>Hello React</title>
+  <!-- Library -->
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+  <!-- babel => compilation du JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+      .Button {
+          border: none;
+          background-color: #9ca0e8;
+          padding: 4px;
+          cursor: pointer;
+          margin: 4px;
+          border-radius: 4px;
+      }
+  </style>
+</head>
+
+<body>
+<div id="root">
+
+</div>
+<script type="text/babel">
+
+  function ListeDeCourses() {
+
+    const articles = ['Poulet', 'Pulet', 'let'];
+
+    // On voudrait tableau qui contienne
+    // Un li avec le nom de l'article à l'intérieur
+    return (
+      <div className="ListeDeCourses">
+        <ul>
+          {articles.map(article => <li>{article}</li>)}
+        </ul>
+      </div>
+    )
+  }
+
+
+  // Un composant
+  // Du code réutilisable
+  // On peut générer le composant à volonté
+  function PrimaryButton(props) { // Provient de la génération du composant
+    console.log(props.text);
+    return (
+      <button className="Button">{props.text}</button>
+    )
+  }
+
+  // App est un composant
+  function App() { // Javascript + Html = JSX
+    // "class" est remplacé par "className"
+
+    const firstname = "Anne";
+    const lastname = "Gauthier";
+    // Partie logique
+
+    const fullName = firstname + lastname + "haha";
+
+    return ( // Partie affichage
+      <div>
+        <button className="Button">Enregistrer</button>
+        <button className="Button">Supprimer</button>
+        <PrimaryButton text={'Enregistrer'}/>
+        <PrimaryButton text={'Supprimer'}/>
+        <ListeDeCourses/>
+      </div>
+    )
+  }
+
+  // Rendu dans le DOM
+  ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+  );
+</script>
+</body>
+
+</html>
