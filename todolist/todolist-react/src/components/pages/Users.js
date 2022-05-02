@@ -1,6 +1,6 @@
 import axios from "axios"
 import React, {useState} from "react";
-import User from "./User";
+import User from "../molecules/User";
 
 export default function Users() {
 

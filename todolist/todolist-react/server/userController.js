@@ -7,13 +7,13 @@ async function displayUsers(request, response) {
     if (users.length === 0) {
         response.json({
             users: [],
-            message: "Ayaya",
+            message: "Aucun utilisateur n'a été trouvé",
         })
     }
 
     response.json({
         users: users,
-        message: "OK",
+        message: "Nous avons trouvé " + users.length + " utilisateurs.",
     })
 }
 

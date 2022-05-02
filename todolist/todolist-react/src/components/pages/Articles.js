@@ -5,7 +5,7 @@
     // 'http://localhost:5050/articles'
 import React, {useState} from "react";
 import axios from "axios";
-import AddArticle from './addArticle.components.js';
+import AddArticle from '../molecules/addArticle.components.js';
 
 export default function Articles () {
     // Les articles sont stockés dans notre state
