@@ -1,0 +1,6 @@
+.idea
+todolist/todolist-react/yarn.lock
+todolist/todolist-react/package-lock.json
+todolist/todolist-react/server/yarn.lock
+todolist/todolist-react/node_module
+todolist/todolist-react/server/node_modules
