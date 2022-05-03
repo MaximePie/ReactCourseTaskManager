@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import User from "../molecules/User";
 import UserForm from "../molecules/UserForm";
 
-export default function Users() {
+export default function Users(props) {
 
   // - La liste des utilisateurs
   // - Mettre à jour avec une fonction de setState

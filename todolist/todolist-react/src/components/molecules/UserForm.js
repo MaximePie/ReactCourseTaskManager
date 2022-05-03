@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import axios from "axios";
+import {UserContext} from "../../App";
 
 /**
  * Créer un utilisateur
@@ -8,12 +9,17 @@ import axios from "axios";
 
 export default function UserForm(props) {
 
+  const context = useContext(UserContext);
+  console.log(context);
+
   const [username, setUsername] = useState('');
   const [job, setJob] = useState('');
   const [age, setAge] = useState('');
 
   return ( // <> est un Fragment React. Il évite d'avoir à envelopper dans une div.
     <>
+
+      <p>{context.text}</p>
       <input type="text" onChange={updateUsername} value={username}/>
       <input type="text" onChange={updateAge} value={age}/>
       <input type="text" onChange={updateJob} value={job}/>
@@ -28,6 +34,8 @@ export default function UserForm(props) {
       username: username,
       age: age
     }
+
+    context.setText("Haha a changé");
     // const demande un emplacement de stockage fixe.
     // const maVariable = "Une valeur qui ne changera pas."
     // maVariable = "Autre chose " => Interdit, parce que c'est une const.
@@ -37,7 +45,7 @@ export default function UserForm(props) {
     // maVariableVariable = "Autre chose" => OKaido pas de problème
 
     // newUser = {job, username, age};
-    await axios.post('http://localhost:5050/users', newUser)
+    // await axios.post('http://localhost:5050/users', newUser)
     props.onSave();
   }
 
