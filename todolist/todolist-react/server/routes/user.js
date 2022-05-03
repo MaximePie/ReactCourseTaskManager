@@ -12,6 +12,25 @@ async function createUsers(request, response) {
 router.get('/', displayUsers)
 router.post('/', createUsers)
 
+router.put('/', async (request, response) => {
+    // Récupère les infos envoyées par le formulaire
+    console.log(request.fields);
+
+    const user = {
+        username: request.fields.newUsername,
+        job: request.fields.newJob,
+        age: request.fields.newAge,
+    }
+
+    // findByIdAndUpdate
+    await User.findByIdAndUpdate(request.fields._id, user)
+
+    // Trouver l'utilisateur qui correspond à l'_id reçu
+    // Et on modifie avec les nouvelles informations
+    // Renvoyer le nouvel utilisateur modifié
+    response.json('ok');
+})
+
 // DELETE, /users/1 fonctionne.
 // DELETE, /users/2 fonctionne.
 // DELETE, /users/Haha fonctionne.

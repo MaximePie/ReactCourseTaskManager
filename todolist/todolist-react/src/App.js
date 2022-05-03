@@ -12,11 +12,11 @@ import {PouletClass, PouletFunction} from "./components/pages/Poulet";
 function App() {
   return (
     <div className="App">
-      <PouletFunction message="female"/>
-      <PouletClass message="male"/>
+      {/*<PouletFunction message="female"/>*/}
+      {/*<PouletClass message="male"/>*/}
       {/*<Todos/>*/}
       {/*<Articles/>*/}
-      {/*<Users/>*/}
+      <Users/>
     </div>
   );
 }
