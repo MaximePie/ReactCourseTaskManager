@@ -104,7 +104,7 @@ export function PouletFunction(props) {
   }
 
   function increaseDays() {
-    setJour(jour + 1)
+    setJour(jour + 1) // Tout ce qui suit un setState est ignoré pour le reste du block
   }
 }
 

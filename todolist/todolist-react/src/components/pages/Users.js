@@ -1,21 +1,8 @@
 import axios from "axios"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import User from "../molecules/User";
 
 export default function Users() {
-
-
-  function gererLeClick() {
-    return supprimerUtilisateur;
-  }
-
-  function supprimerUtilisateur() {
-    console.log("Je supprime l'utilisateur");
-  }
-
-  const supprimer = gererLeClick();
-  supprimer();
-
 
   // - La liste des utilisateurs
   // - Mettre à jour avec une fonction de setState
@@ -25,14 +12,21 @@ export default function Users() {
   const [job, setJob] = useState('');
   const [age, setAge] = useState('');
 
+  // Function, et des dépendances
+  // Function : Qu'est-ce qu'on veut faire ? fetchUsers
+  // Les dépendances, c'est "quand est-ce qu'on veut le faire ?" Au chargement du composant
+  // useEffect(fetchUsers) // Déclenche fetchUsers à chaque setState
+  // useEffect(fetchUsers, [username]) // Déclenche fetchUsers à chaque setState de username seulement
+  useEffect(fetchUsers, []) // Déclenche fetchUsers une seule fois à l'apparition du composant
+
   return (
     <div>
       <h1>Utilisateurs</h1>
-      <button onClick={fetchUsers}>Récupérer users</button>
       {users.map(element => (
         <User
           user={element}
           afterDelete={fetchUsers}
+          afterUpdate={fetchUsers}
         />
       ))}
 
@@ -82,8 +76,9 @@ export default function Users() {
 
    * Une fois que c'est fait, on met à jour la liste des utilisateurs.
    */
-  async function fetchUsers() {
-    const response = await axios.get('http://localhost:5050/users')
-    setUsers(response.data.users)
+  function fetchUsers() {
+    axios.get('http://localhost:5050/users').then((response) => {
+      setUsers(response.data.users)
+    })
   }
 }
