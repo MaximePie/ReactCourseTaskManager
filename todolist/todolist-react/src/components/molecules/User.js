@@ -3,6 +3,7 @@
 // Ce que les paramètres sont à la fonction
 import React, {useState} from "react";
 import axios from "axios";
+import UserInfo from "./UserInfo";
 
 export default function User(props) {
   const age = props.user.age;
@@ -37,12 +38,12 @@ export default function User(props) {
   return (
     <div className="User">
       {mode === 'read' ? (
-        <div>
-          <p>Username : {username}</p>
-          <p>Job : {job}</p>
-          <p>Age : {age}</p>
-          <p>Id : {_id}</p>
-        </div>
+        <UserInfo
+          username={username}
+          job={job}
+          age={age}
+          _id={_id}
+        />
       ) : (
         <div>
           <label htmlFor="username">Username : </label>

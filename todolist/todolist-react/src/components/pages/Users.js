@@ -1,6 +1,7 @@
 import axios from "axios"
 import React, {useEffect, useState} from "react";
 import User from "../molecules/User";
+import UserForm from "../molecules/UserForm";
 
 export default function Users() {
 
@@ -8,9 +9,6 @@ export default function Users() {
   // - Mettre à jour avec une fonction de setState
 
   const [users, setUsers] = useState([])
-  const [username, setUsername] = useState('');
-  const [job, setJob] = useState('');
-  const [age, setAge] = useState('');
 
   // Function, et des dépendances
   // Function : Qu'est-ce qu'on veut faire ? fetchUsers
@@ -29,47 +27,9 @@ export default function Users() {
           afterUpdate={fetchUsers}
         />
       ))}
-
-      <div>
-        <h4>Créer un utilisateur</h4>
-        <input type="text" onChange={updateUsername} value={username}/>
-        <input type="text" onChange={updateAge} value={age}/>
-        <input type="text" onChange={updateJob} value={job}/>
-        <button onClick={createUser}>Sauvegarder</button>
-      </div>
+      <UserForm onSave={fetchUsers}/>
     </div>
   )
-
-  async function createUser() {
-    const newUser = {
-      job: job, // Si la valeur a le même nom que la propriété, on peut les fusionner
-      username: username,
-      age: age
-    }
-    // const demande un emplacement de stockage fixe.
-    // const maVariable = "Une valeur qui ne changera pas."
-    // maVariable = "Autre chose " => Interdit, parce que c'est une const.
-
-    // let demande un emplacement modifiable, c'est plus de ressources à mobiliser pour le navigateur
-    // let maVariableVariable = "Une valeur qui pourrait changer";
-    // maVariableVariable = "Autre chose" => OKaido pas de problème
-
-    // newUser = {job, username, age};
-    await axios.post('http://localhost:5050/users', newUser)
-    fetchUsers();
-  }
-
-  function updateUsername(event) {
-    setUsername(event.target.value);
-  }
-
-  function updateAge(event) {
-    setAge(event.target.value);
-  }
-
-  function updateJob(event) {
-    setJob(event.target.value);
-  }
 
   /**
    * Récupérer les utilisateurs depuis le serveur grâce à axios
