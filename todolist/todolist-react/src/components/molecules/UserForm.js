@@ -1,5 +1,6 @@
 import React, {useContext, useState} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 /**
  * Créer un utilisateur
@@ -14,7 +15,10 @@ import axios from "axios";
  * }
  */
 
+
+
 export default function UserForm(props) {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
     age: "",
@@ -78,5 +82,6 @@ export default function UserForm(props) {
     // newUser = {job, username, age};
     await axios.post('http://localhost:5050/users', user)
     props.onSave();
+    navigate('/test')
   }
 }

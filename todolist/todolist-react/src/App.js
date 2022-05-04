@@ -6,20 +6,33 @@ import Users from './components/pages/Users.js';
 import {PouletClass, PouletFunction} from "./components/pages/Poulet";
 import Books from "./components/molecules/Books"
 import {createContext, useState} from "react";
+import {Route, Routes, Link} from "react-router-dom";
 
-// On crée un nouveau contexte UserContext avec pour valeur par défaut : false
 export const UserContext = createContext(false);
 
+
+/**
+ * React Router
+ * Une librairie qui permet d'installer des routes
+ *
+ * Dans notre application on pourra décliner nos composants en plusieurs pages.
+ *
+ * Pour accéder à ces pages, il faut des routes.
+ *
+ * Des composants sont mis à notre disposition pour le faire.
+ * 1 - Installer react-router-dom avec npm.
+ * npm install react-router-dom
+ *
+ * 2 - Envelopper notre application dans un BrowserRouter
+ *
+ * 3 - <Route path='lechemin', element = "ce qu'on veut afficher si le chemin est respecté"
+ */
+
+
 function App() {
-  // L'état isConnected permet de savoir si l'utilisateur est connecté ou non.
-  // Problème : Il faut faire passer cette valeur aux composants enfants pour leur permettre de s'adapter en fonction
-  // de l'état de connexion.
-  // Par exemple, on souhaite interdire aux utilisateurs non connectés de supprimer d'autres utilisateurs.
-  // => Il faut faire passer cette valeur par des props au Composant User
+
   const [isConnected, setConnectionState] = useState(true);
 
-  // 2 - Envelopper l'application dans un Provider
-  // 3 - Donner une valeur au Provider
   return (
     <UserContext.Provider value={isConnected}>
       <div className="App">
@@ -28,12 +41,26 @@ function App() {
         <p>
           {isConnected ? "Connecté" : "Déconnecté"}
         </p>
+        <div>
+          <h4>Ici sera la navbar</h4>
+          <div>
+            <Link to="/test">Test</Link>
+            <Link to="/users">Utilisateurs</Link>
+            <Link to="/baba">Books</Link>
+          </div>
+        </div>
+        <Routes>
+          <Route path="/test" element={<div>Test réussi</div>}/>
+          <Route path="/users" element={<Users/>}/>
+          <Route path="/baba" element={<Books/>}/>
+        </Routes>
         {/*<PouletFunction message="female"/>*/}
         {/*<PouletClass message="male"/>*/}
         {/*<Todos/>*/}
         {/*<Articles/>*/}
-        <Users/>
-        {/*<Books/>*/}
+        <div>
+          <h4>Ici sera le footer</h4>
+        </div>
       </div>
     </UserContext.Provider>
   );
