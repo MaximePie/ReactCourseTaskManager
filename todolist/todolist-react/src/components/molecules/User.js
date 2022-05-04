@@ -1,15 +1,19 @@
 
 // Les props sont au composant
 // Ce que les paramètres sont à la fonction
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import axios from "axios";
 import UserInfo from "./UserInfo";
+import {UserContext} from "../../App";
 
 export default function User(props) {
   const age = props.user.age;
   const username = props.user.username;
   const job = props.user.job;
   const _id = props.user._id;
+
+  // 1 - Récupère la valeur isConnected dans le contexte.
+  const isConnected = useContext(UserContext);
 
   // props.user.username = "haha"; // interdit /!\
   const [newUsername, setNewUsername] = useState(username); // On les récupère depuis les props.
@@ -56,25 +60,32 @@ export default function User(props) {
           <input type="text" value={newAge} onChange={updateAge}/>
         </div>
       )}
-      <div>
-        <button onClick={changeMode}>
-          {actionText}
-        </button>
-        <button onClick={() => {
-          deleteUser(_id);
-        }}>
-          {
-            /*
-            <button onClick={function() {
-                deleteUser(element._id);
-            }
-            }}>
+      {/**
+        Si props.isConnected est égale à true, on veut afficher les boutons.
+       Sinon, on n'affichage rien.
+       */}
+      {isConnected === true ? (
+        <div>
+          <button onClick={changeMode}>
+            {actionText}
+          </button>
+          <button onClick={() => {
+            deleteUser(_id);
+          }}>
+            {
+              /*
+              <button onClick={function() {
+                  deleteUser(element._id);
+              }
+              }}>
 
-             */
-          }
-          Supprimer
-        </button>
-      </div>
+               */
+            }
+            Supprimer
+          </button>
+        </div>
+      )
+      : null}
     </div>
   )
 

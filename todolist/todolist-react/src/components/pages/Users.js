@@ -10,6 +10,9 @@ export default function Users(props) {
 
   const [users, setUsers] = useState([])
 
+  // isConnected est passé depuis App.js
+  // On doit maintenant la passer à notre composant <User>
+
   // Function, et des dépendances
   // Function : Qu'est-ce qu'on veut faire ? fetchUsers
   // Les dépendances, c'est "quand est-ce qu'on veut le faire ?" Au chargement du composant
