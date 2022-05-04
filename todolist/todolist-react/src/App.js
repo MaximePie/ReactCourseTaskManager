@@ -4,6 +4,7 @@ import Todos from './components/pages/Todos.components';
 import Articles from './components/pages/Articles.js';
 import Users from './components/pages/Users.js';
 import {PouletClass, PouletFunction} from "./components/pages/Poulet";
+import Books from "./components/molecules/Books"
 import {createContext, useState} from "react";
 
 // On crée un nouveau contexte UserContext avec pour valeur par défaut : false
@@ -22,17 +23,18 @@ function App() {
   return (
     <UserContext.Provider value={isConnected}>
       <div className="App">
-          <button onClick={login}>Se connecter</button>
-          <button onClick={logout}>Se déconnecter</button>
-          <p>
-            {isConnected ? "Connecté" : "Déconnecté"}
-          </p>
-          {/*<PouletFunction message="female"/>*/}
-          {/*<PouletClass message="male"/>*/}
-          {/*<Todos/>*/}
-          {/*<Articles/>*/}
-          <Users/>
-        </div>
+        <button onClick={login}>Se connecter</button>
+        <button onClick={logout}>Se déconnecter</button>
+        <p>
+          {isConnected ? "Connecté" : "Déconnecté"}
+        </p>
+        {/*<PouletFunction message="female"/>*/}
+        {/*<PouletClass message="male"/>*/}
+        {/*<Todos/>*/}
+        {/*<Articles/>*/}
+        <Users/>
+        {/*<Books/>*/}
+      </div>
     </UserContext.Provider>
   );
 
@@ -44,7 +46,6 @@ function App() {
   function logout() {
     setConnectionState(false);
   }
-
 
 
 }

@@ -40,7 +40,7 @@ export default function User(props) {
 
   // mode === 'read' ? formulaire : les infos
   return (
-    <div className="User">
+    <div className={"User"}>
       {mode === 'read' ? (
         <UserInfo
           username={username}

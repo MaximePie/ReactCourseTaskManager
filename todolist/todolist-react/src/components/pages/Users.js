@@ -23,6 +23,7 @@ export default function Users(props) {
   return (
     <div>
       <h1>Utilisateurs</h1>
+      <UserForm onSave={fetchUsers}/>
       {users.map(element => (
         <User
           user={element}
@@ -30,7 +31,6 @@ export default function Users(props) {
           afterUpdate={fetchUsers}
         />
       ))}
-      <UserForm onSave={fetchUsers}/>
     </div>
   )
 

@@ -6,28 +6,67 @@ import axios from "axios";
  * Ou bien modifier un utilisateur existant
  */
 
-export default function UserForm(props) {
+/**
+ * User : {
+ *   username: "",
+ *   job: "",
+ *   age: "",
+ * }
+ */
 
-  const [username, setUsername] = useState('');
-  const [job, setJob] = useState('');
-  const [age, setAge] = useState('');
+export default function UserForm(props) {
+  const [user, setUser] = useState({
+    username: "",
+    age: "",
+    job: "",
+  })
 
   return ( // <> est un Fragment React. Il évite d'avoir à envelopper dans une div.
     <>
-      <input type="text" onChange={updateUsername} value={username}/>
-      <input type="text" onChange={updateAge} value={age}/>
-      <input type="text" onChange={updateJob} value={job}/>
+      <label htmlFor="">
+        Username
+      </label>
+      <input
+        type="text"
+        onChange={updateField}
+        value={user.username}
+        name="username"
+      />
+      <label htmlFor="">
+        Age
+      </label>
+      <input
+        type="text"
+        onChange={updateField}
+        value={user.age}
+        name="age"
+      />
+
+      <label htmlFor="">
+        Job
+      </label>
+      <input
+        type="text"
+        onChange={updateField}
+        value={user.job}
+        name="job"
+      />
       <button onClick={createUser}>Sauvegarder</button>
     </>
   )
 
+  function updateField(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+
+    setUser({
+      ...user,
+      [name]: value,
+    })
+  }
+
 
   async function createUser() {
-    const newUser = {
-      job: job, // Si la valeur a le même nom que la propriété, on peut les fusionner
-      username: username,
-      age: age
-    }
     // const demande un emplacement de stockage fixe.
     // const maVariable = "Une valeur qui ne changera pas."
     // maVariable = "Autre chose " => Interdit, parce que c'est une const.
@@ -37,20 +76,7 @@ export default function UserForm(props) {
     // maVariableVariable = "Autre chose" => OKaido pas de problème
 
     // newUser = {job, username, age};
-    // await axios.post('http://localhost:5050/users', newUser)
+    await axios.post('http://localhost:5050/users', user)
     props.onSave();
-  }
-
-
-  function updateUsername(event) {
-    setUsername(event.target.value);
-  }
-
-  function updateAge(event) {
-    setAge(event.target.value);
-  }
-
-  function updateJob(event) {
-    setJob(event.target.value);
   }
 }
