@@ -13,7 +13,7 @@ export default function User(props) {
   const _id = props.user._id;
 
   // 1 - Récupère la valeur isConnected dans le contexte.
-  const isConnected = useContext(UserContext);
+  const context = useContext(UserContext);
 
   // props.user.username = "haha"; // interdit /!\
   const [newUsername, setNewUsername] = useState(username); // On les récupère depuis les props.
@@ -64,7 +64,7 @@ export default function User(props) {
         Si props.isConnected est égale à true, on veut afficher les boutons.
        Sinon, on n'affichage rien.
        */}
-      {isConnected === true ? (
+      {context.isConnected === true ? (
         <div>
           <button onClick={changeMode}>
             {actionText}
