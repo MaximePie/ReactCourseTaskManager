@@ -36,28 +36,28 @@ function App() {
   return (
     <UserContext.Provider value={isConnected}>
       <div className="App">
-        <button onClick={login}>Se connecter</button>
-        <button onClick={logout}>Se déconnecter</button>
-        <p>
-          {isConnected ? "Connecté" : "Déconnecté"}
-        </p>
         <div>
           <h4>Ici sera la navbar</h4>
           <div>
             <Link to="/test">Test</Link>
             <Link to="/users">Utilisateurs</Link>
             <Link to="/baba">Books</Link>
+            <Link to="/todo">Tâches</Link>
+            <Link to="/products">Courses</Link>
           </div>
         </div>
+        <button onClick={login}>Se connecter</button>
+        <button onClick={logout}>Se déconnecter</button>
+        <p>
+          {isConnected ? "Connecté" : "Déconnecté"}
+        </p>
         <Routes>
           <Route path="/test" element={<div>Test réussi</div>}/>
           <Route path="/users" element={<Users/>}/>
           <Route path="/baba" element={<Books/>}/>
+          <Route path='/todo' element={<Todos/>}/>
+          <Route path='/products' element={<Articles/>} />
         </Routes>
-        {/*<PouletFunction message="female"/>*/}
-        {/*<PouletClass message="male"/>*/}
-        {/*<Todos/>*/}
-        {/*<Articles/>*/}
         <div>
           <h4>Ici sera le footer</h4>
         </div>
