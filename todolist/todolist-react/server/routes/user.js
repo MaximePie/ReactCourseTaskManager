@@ -17,9 +17,9 @@ router.put('/', async (request, response) => {
     console.log(request.fields);
 
     const user = {
-        username: request.fields.newUsername,
-        job: request.fields.newJob,
-        age: request.fields.newAge,
+        username: request.fields.username,
+        job: request.fields.job,
+        age: request.fields.age,
     }
 
     // findByIdAndUpdate

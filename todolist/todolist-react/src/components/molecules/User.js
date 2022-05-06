@@ -5,6 +5,7 @@ import React, {useContext, useState} from "react";
 import axios from "axios";
 import UserInfo from "./UserInfo";
 import {UserContext} from "../../App";
+import UserModalForm from "./UserModalForm";
 
 export default function User(props) {
   const age = props.user.age;
@@ -39,8 +40,19 @@ export default function User(props) {
   // actionText = mode === 'read' ? 'Modifier' : 'Enregistrer';
 
   // mode === 'read' ? formulaire : les infos
+  const isModalOpen = mode === 'edit';
   return (
-    <div className={"User"}>
+    <div
+      className={"User"}
+    >
+      <UserModalForm
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        username={username}
+        age={age}
+        job={job}
+        _id={_id}
+      />
       {mode === 'read' ? (
         <UserInfo
           username={username}
@@ -48,18 +60,9 @@ export default function User(props) {
           age={age}
           _id={_id}
         />
-      ) : (
-        <div>
-          <label htmlFor="username">Username : </label>
-          <input type="text" value={newUsername} onChange={updateUsername}/>
-
-          <label htmlFor="age">Job : </label>
-          <input type="text" value={newJob} onChange={updateJob}/>
-
-          <label htmlFor="job">Age : </label>
-          <input type="text" value={newAge} onChange={updateAge}/>
-        </div>
-      )}
+      ) : null}
+      {/*{mode === 'read' && "haha"}*/}
+      {/*{mode === 'read' ? "haha" : null}*/}
       {/**
         Si props.isConnected est égale à true, on veut afficher les boutons.
        Sinon, on n'affichage rien.
@@ -89,6 +92,10 @@ export default function User(props) {
     </div>
   )
 
+  function closeModal() {
+    setMode("read");
+  }
+
   function updateUsername(event) {
     setNewUsername(event.target.value);
   }
@@ -106,25 +113,25 @@ export default function User(props) {
    * Sinon passer sur "read"
    */
   async function changeMode() {
+    setMode(mode === 'read' ? 'edit' : 'read') // Condition, si oui, si non.
+
     // if (mode === 'read') {
     //   setMode('edit');
     // }
     // else {
     //   setMode('read');
     // }
-    if (mode === 'edit') {
-      // Déclencher une requête de mise à jour vers le serveur
-      const user = {
-        newUsername,
-        newJob,
-        newAge,
-        _id,
-      }
-      await axios.put('http://localhost:5050/users', user)
-      props.afterUpdate();
-    }
-    setMode(mode === 'read' ? 'edit' : 'read') // Condition, si oui, si non.
-
+    // if (mode === 'edit') {
+    //   // Déclencher une requête de mise à jour vers le serveur
+    //   const user = {
+    //     newUsername,
+    //     newJob,
+    //     newAge,
+    //     _id,
+    //   }
+    //   await axios.put('http://localhost:5050/users', user)
+    //   props.afterUpdate();
+    // }
   }
 
   async function deleteUser() {
