@@ -4,10 +4,12 @@ import Todos from './components/pages/Todos.components';
 import Articles from './components/pages/Articles.js';
 import Users from './components/pages/Users.js';
 import Login from './components/pages/Login.js';
+import Navbar from './components/molecules/Navbar.js';
 import {PouletClass, PouletFunction} from "./components/pages/Poulet";
+import Champignon from "./components/pages/Champignon";
 import Books from "./components/molecules/Books"
 import {createContext, useState} from "react";
-import {Route, Routes, Link} from "react-router-dom";
+import {Route, Routes, Link, NavLink} from "react-router-dom";
 
 export const UserContext = createContext(false);
 
@@ -42,18 +44,10 @@ function App() {
       logout,
     }}>
       <div className="App">
-        <div>
-          <h4>Ici sera la navbar</h4>
-          <div>
-            <Link to="/users">Utilisateurs</Link>
-            <Link to="/baba">Books</Link>
-            <Link to="/todo">Tâches</Link>
-            <Link to="/products">Courses</Link>
-            <Link to="/login">Se connecter</Link>
-          </div>
-        </div>
+        <Navbar/>
         <Routes>
           <Route path="/users" element={<Users/>}/>
+          <Route path='/champignon' element={<Champignon/>} />
           <Route path="/baba" element={<Books/>}/>
           <Route path='/todo' element={<Todos/>}/>
           <Route path='/products' element={<Articles/>} />
